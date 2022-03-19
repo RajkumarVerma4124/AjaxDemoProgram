@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Test Ajax Services</title>
+</head>
+<style>
+    .body {
+        margin: auto;
+    }
+    
+    h1 {
+        color: #82A70C;
+        font-family: Roboto;
+        font-size: 34px;
+        margin-left: 50px;
+    }
+    
+    div {
+        min-height: calc(100%-100px);
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #82A70C;
+        padding: 50px;
+        width: 80%;
+        font-size: xx-large;
+        margin-top: 50px;
+    }
+    
+    div:hover {
+        box-shadow: 0px 0px 15px #111;
+        transform: scale(1.01);
+        transition-duration: 0.5s;
+    }
+</style>
+<script src="../services/HttpService.js"></script>
+</head>
+
+<body>
+    <h1>Test Services Result</h1>
+    <div id="getServices"></div>
+    <div id="deleteServices"></div>
+    <div id="postServices"></div>
+    <script>
+        const getElement = document.querySelector("#getServices");
+        const getURL = "http://localhost:3000/employees/1";
+        makePromiseCall("GET", getURL, true)
+            .then(responseText => {
+                getElement.textContent = "Get User Data :" + responseText;
+            })
+            .catch(error => {
+                getElement.textContent = "GET Error Status : " + JSON.stringify(error);
+            });
+
+
+        const deleteElement = document.querySelector("#deleteServices");
+        const deleteURL = "http://localhost:3000/employees/4";
+        makePromiseCall("DELETE", deleteURL, false)
+            .then(responseText => {
+                deleteElement.textContent = "Deleted Data : " + responseText;
+            })
+            .catch(error => {
+                deleteElement.textContent = "DELETE Error Status : " + JSON.stringify(error);
+            });
+        const postElement = document.querySelector("#postServices");
+        const postURL = "http://localhost:3000/employees";
+        const empData = {
+            "firstName": "Aman",
+            "salary": "50000"
+        }
+        makePromiseCall("POST", postURL, true, empData)
+            .then(responseText => {
+                postElement.textContent = "User Added : " + responseText;
+            })
+            .catch(error => {
+                postElement.textContent = "POST Error Status : " + JSON.stringify(error);
+            });
+    </script>
+</body>
+
+</html>
