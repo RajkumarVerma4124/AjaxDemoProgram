@@ -1,7 +1,7 @@
 //Function to get the current time(UC1)
 function showTime() {
     const date = new Date();
-    return date.getHours() + " Hrs:: " + date.getMinutes() + " Minutes:: " + date.getMilliseconds() + " MilliSeconds";
+    return date.getHours() + " Hrs || " + date.getMinutes() + " Minutes || " + date.getMilliseconds() + " MilliSeconds";
 }
 
 //Function to show the session expire after some time(UC1)
