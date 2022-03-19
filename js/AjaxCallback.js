@@ -31,7 +31,7 @@ let getUserDetails = (data) => console.log("Get User Data: " + data);
 makeAJAXCall("GET", getURL, getUserDetails);
 console.log("Made Get Ajax Call To The Server At :: " + timer.showTime() + "\n");
 
-//Deleting data from json server 
+//Post data into json server
 const deleteURL = "http://localhost:3000/employees/2";
 let userDeleted = (data) => console.log("User Deleted: " + data);
 makeAJAXCall("DELETE", deleteURL, userDeleted, false);
